@@ -19,7 +19,12 @@ module.exports = {
     },
 
     module: {
-        rules: [{ test: /\.(ts|js)x?$/, loader: 'babel-loader', exclude: /node_modules/ }],
+        rules: [
+            {test: /\.(ts|js)x?$/, loader: 'babel-loader', exclude: /node_modules/},
+            {test: /\.(scss|sass|css)$/, use: ["style-loader", "css-loader", "sass-loader"]},
+            {test: /\.(png|svg|jpg|jpeg|gif|ico)$/, use: ['file-loader']},
+            {test: /\.(woff|woff2|eot|ttf|otf)$/, use: ['file-loader']}
+        ],
     },
     devtool: "sourcemap",
     devServer: {
@@ -31,7 +36,7 @@ module.exports = {
     // externals: ["react", "react-dom"],
     plugins: [
         new CleanWebpackPlugin(),
-        new HtmlWebpackPlugin({ inject: true, template: path.join(APP_PATH, 'index.html') }),
+        new HtmlWebpackPlugin({inject: true, template: path.join(APP_PATH, 'index.html')}),
         new ForkTsCheckerWebpackPlugin(),
     ]
 };

@@ -1,55 +1,15 @@
 {
+  "private": true,
   "name": "livemicro",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "type-check": "tsc --noEmit",
-    "type-check:watch": "yarn run type-check -- --watch",
-    "build": "webpack --progress --colors --mode=production",
-    "start": "webpack-dev-server --config webpack.config.js --progress --colors --mode=development"
+    "shop": "yarn workspace @livemicro/shop start",
+    "store": "yarn workspace @livemicro/store start",
+    "start": "concurrently --kill-others-on-fail \"yarn shop\"  \"yarn store\""
   },
   "dependencies": {
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-router-dom": "^5.0.1",
-    "single-spa": "^4.3.7",
-    "single-spa-react": "^2.10.2"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
-    "@babel/plugin-proposal-numeric-separator": "^7.2.0",
-    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/preset-typescript": "^7.3.3",
-    "@types/react": "^16.9.2",
-    "@types/react-dom": "^16.9.0",
-    "@types/react-router-dom": "^4.3.4",
-    "@types/single-spa-react": "^2.8.3",
-    "babel-eslint": "^10.0.2",
-    "babel-loader": "^8.0.6",
-    "clean-webpack-plugin": "^3.0.0",
-    "css-loader": "^3.2.0",
-    "eslint": "^6.2.1",
-    "eslint-config-prettier": "^6.1.0",
-    "eslint-config-react-important-stuff": "^1.1.0",
-    "eslint-plugin-prettier": "^3.1.0",
-    "file-loader": "^4.2.0",
-    "fork-ts-checker-webpack-plugin": "1.4.3",
-    "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^3.2.0",
-    "node-sass": "^4.12.0",
-    "prettier": "^1.18.2",
-    "pretty-quick": "^1.11.1",
-    "sass-loader": "^7.3.1",
-    "source-map-loader": "^0.2.4",
-    "style-loader": "^1.0.0",
-    "typescript": "^3.5.3",
-    "webpack": "^4.39.2",
-    "webpack-cli": "^3.3.7",
-    "webpack-dev-server": "^3.8.0"
+    "concurrently": "^4.1.2"
   }
 }

@@ -25,12 +25,11 @@ export class ConfigService {
       NODE_ENV: Joi.string()
         .valid(['development', 'production', 'test', 'provision'])
         .default('development'),
-      APP_PORT: Joi.number().default(4772),
+      APP_PORT: Joi.number().default(4771),
       RABBITMQ_URI: Joi.string().default('amqp://localhost:5672'),
-      RABBITMQ_EXCHANGE: Joi.string().default('exchangeA'),
-      RABBITMQ_EXCHANGE_TYPE: Joi.string().default('fanout'),
-      RABBITMQ_QUEUE: Joi.string().default('exchangeA_queue'),
-      RABBITMQ_ROUTING_KEY: Joi.string().default('exchangeA_route'),
+      RABBITMQ_EXCHANGE: Joi.string().default('supply.exchange'),
+      RABBITMQ_EXCHANGE_TYPE: Joi.string().default('direct'),
+      RABBITMQ_ROUTES: Joi.string().default('shop.route|grocery.route'),
     });
 
     const { error, value: validatedEnvConfig } = Joi.validate(
@@ -58,11 +57,8 @@ export class ConfigService {
   get QueueExchangeType(): string {
     return String(this.envConfig.RABBITMQ_EXCHANGE_TYPE);
   }
-  get QueueRoute(): string {
-    return String(this.envConfig.RABBITMQ_ROUTING_KEY);
-  }
 
-  get QueueName(): string {
-    return String(this.envConfig.RABBITMQ_QUEUE);
+  get QueueRoutes(): string[] {
+    return this.envConfig.RABBITMQ_ROUTES.split('|');
   }
 }

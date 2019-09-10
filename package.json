@@ -5,9 +5,10 @@
     "packages/*"
   ],
   "scripts": {
-    "shop": "yarn workspace @livemicro/shop start",
     "store": "yarn workspace @livemicro/store start",
-    "start": "concurrently --kill-others-on-fail \"yarn shop\"  \"yarn store\""
+    "shop": "yarn workspace @livemicro/shop start",
+    "grocery": "yarn workspace @livemicro/grocery start",
+    "start": "concurrently --kill-others-on-fail \"yarn store\" \"yarn shop\" \"yarn grocery\""
   },
   "dependencies": {
     "concurrently": "^4.1.2"

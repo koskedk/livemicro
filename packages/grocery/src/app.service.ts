@@ -5,6 +5,6 @@ import { Product } from './product';
 @Injectable()
 export class AppService {
   getHello(): string {
-    return 'Shop App running...';
+    return 'Groceries App running...';
   }
 }

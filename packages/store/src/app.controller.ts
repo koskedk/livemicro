@@ -1,15 +1,16 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import { Product } from './product';
-import { AmqpConnection } from '@nestjs-plus/rabbitmq';
 import { ConfigService } from './config/config.service';
+import { MessagingService } from './messging/messaging.service';
 
 @Controller()
 export class AppController {
   constructor(
-    private readonly config:ConfigService,
-    private readonly amqpConnection: AmqpConnection,
-    private readonly appService: AppService) {}
+    private readonly config: ConfigService,
+    private readonly messagingService: MessagingService,
+    private readonly appService: AppService,
+  ) {}
 
   @Get()
   getHello(): string {
@@ -18,10 +19,19 @@ export class AppController {
 
   @Post('/send')
   public async publishMessage(@Body() product: Product) {
-    await this.amqpConnection.publish(this.config.QueueExchange,this.config.QueueRoute,product);
-    console.log('=== SENT TO STORES ===')
-    return {
-      result: `Product ${product.name} Supplied !`,
-    };
+    const queue = this.config.QueueRoutes.find(x => x.includes(product.type));
+    const result = await this.messagingService.publishMessage(
+      product,
+      this.config.QueueExchange,
+      queue,
+    );
+    if (result) {
+      console.log(`=== SENT TO ${product.type} || ${queue} ===`);
+      return {
+        result: `Product ${product.name} Supplied !`,
+      };
+    } else {
+      console.error('error');
+    }
   }
 }

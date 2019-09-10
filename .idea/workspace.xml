@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cfe2c505-c53f-4e8f-a80d-eab2ec179819" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/grocery/src/messging/messaging.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/grocery/src/messging/messaging.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/shop/src/messging/messaging.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shop/src/messging/messaging.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/store/src/app.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/store/src/app.controller.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -135,7 +132,17 @@
       <workItem from="1567966497074" duration="6186000" />
       <workItem from="1568092185812" duration="10821000" />
       <workItem from="1568129248590" duration="5042000" />
+      <workItem from="1568149635461" duration="14000" />
+      <workItem from="1568150553692" duration="620000" />
     </task>
+    <task id="LOCAL-00001" summary="initial demo">
+      <created>1568137813687</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1568137813688</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,5 +160,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="initial demo" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial demo" />
   </component>
 </project>

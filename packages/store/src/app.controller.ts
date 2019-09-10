@@ -2,7 +2,7 @@ import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import { Product } from './product';
 import { ConfigService } from './config/config.service';
-import { MessagingService } from './messging/messaging.service';
+import { MessagingService } from './messaging/messaging.service';
 
 @Controller()
 export class AppController {
@@ -20,7 +20,7 @@ export class AppController {
   @Post('/send')
   public async publishMessage(@Body() product: Product) {
     const queue = this.config.QueueRoutes.find(x => x.includes(product.type));
-    const result = await this.messagingService.publishMessage(
+    const result = await this.messagingService.publish(
       product,
       this.config.QueueExchange,
       queue,

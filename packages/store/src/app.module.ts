@@ -2,19 +2,11 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { RabbitMQModule } from '@nestjs-plus/rabbitmq';
+import { MessagingModule } from './messging/messaging.module';
+import { ConfigModule } from './config/config.module';
 
 @Module({
-  imports: [
-    RabbitMQModule.forRoot({
-      exchanges: [
-        {
-          name: 'exchange1',
-          type: 'fanout',
-        }
-      ],
-      uri: 'amqp://localhost:5672'
-    }),
-  ],
+  imports: [ConfigModule, MessagingModule],
   controllers: [AppController],
   providers: [AppService],
 })

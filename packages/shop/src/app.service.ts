@@ -7,10 +7,11 @@ export class AppService {
   getHello(): string {
     return 'Shop App running...';
   }
+
   @RabbitSubscribe({
-    exchange: 'exchange1',
-    routingKey: 'subscribe-route',
-    queue: 'subscribe-queue'
+    exchange: 'supply_exchange',
+    routingKey: 'supply_route',
+    queue:  'supply_queue'
   })
   public async pubSubHandler(msg: any) {
     const product = new Product(msg.name);
